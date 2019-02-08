@@ -6,6 +6,7 @@ const fetchVideoInfo = require("youtube-info");
 const bot = require('./package.json');
 const simpleytapi = require('simple-youtube-api')
 const youtube = new simpleytapi(yt_api_key);
+const devs ["490478294135865344", "334837414738788355", "380307890235506698"]
 const prefix = "lj";
 client.login(process.env.BOT);
 var guilds = {};
@@ -14,7 +15,7 @@ var guilds = {};
 client.on("ready", () => {
 client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setActivity("Music",{type: 'LISTENING'});
+  client.user.setActivity("L05~.",{type: 'WATCHING'});
 });
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
