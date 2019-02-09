@@ -3,10 +3,11 @@ const yt_api_key = "AIzaSyDV2JNcnCiCEW99ON7vvwBN5JkDWaIXkXc"
 const client = new Client({ disableEveryone: true})
 const ytdl = require("ytdl-core");
 const fetchVideoInfo = require("youtube-info");
+const devs = ["490478294135865344", "380307890235506698", "334837414738788355"]
 const bot = require('./package.json');
 const simpleytapi = require('simple-youtube-api')
 const youtube = new simpleytapi(yt_api_key);
-const prefix = "1";
+const prefix = "lj";
 client.login(process.env.BOT);
 var guilds = {};
 
@@ -14,7 +15,7 @@ var guilds = {};
 client.on("ready", () => {
 client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setActivity("1play , 1search",{type: 'LISTENING'});
+  client.user.setActivity("LO5.~",{type: 'WATCHING'});
 });
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
@@ -124,13 +125,11 @@ client.on('message', async function(message) {
         let uptime = u.d + " days  , " + u.h + " hrs  , " + u.m + " mins  , " + u.s + " secs"
         message.channel.send(new RichEmbed() 
         .setAuthor(client.user.username,client.user.avatarURL)
-        .setURL("https://abayro.xyz")
         .addField("Version", bot.version, true)
         .addField("Library", "[discordjs](https://www.npmjs.com/search?q=discord.js)", true)
-        .addField("Creator", "Abady", true)
+        .addField("Creator", "ثلآثة وسُتوننَ", true)
         .addField("Users", `${client.users.size}`, true)
-        .addField('RAM Usage',`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,true)     
-        .addField("Website", "http://abayro.xyz", true)
+        .addField('RAM Usage',`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,true)  
         .setFooter(`Uptime ${uptime} | ${client.user.username} doesn't use Lavalink!`)
         .setColor("RANDOM")
     )
@@ -209,7 +208,7 @@ msg22.edit("", {embed: {
         const permissions = voiceChannel.permissionsFor(message.client.user)
         if (!permissions.has('CONNECT')) return message.channel.send({embed: {description: "🛑 I don't have permission to CONNECT! Give me some."}});
         if (!permissions.has('SPEAK')) return message.channel.send({embed: {description: "🛑 I don't have permission to SPEAK! Give me some."}});
-         if (args.length == 0 || !args) return message.channel.send(`:musical_note: 1play **<Youtube URL / Search>**`)
+         if (args.length == 0 || !args) return message.channel.send(`:musical_note: ljplay **<Youtube URL / Search>**`)
             if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
                 if(guilds[message.guild.id].queue.length > 100) return message.channel.send(``, {embed: {
                     description: `🔒 Sorry, max queue length is 100, do **${prefix}clear** to clear entire queue or **${prefix}clear <number>** to clear 1 item`
