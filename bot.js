@@ -6,8 +6,7 @@ const fetchVideoInfo = require("youtube-info");
 const bot = require('./package.json');
 const simpleytapi = require('simple-youtube-api')
 const youtube = new simpleytapi(yt_api_key);
-const devs = ["490478294135865344", "334837414738788355", "380307890235506698"]
-const prefix = "lj";
+const prefix = "1";
 client.login(process.env.BOT);
 var guilds = {};
 
@@ -15,7 +14,7 @@ var guilds = {};
 client.on("ready", () => {
 client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setActivity("L05~.",{type: 'WATCHING'});
+  client.user.setActivity("1play , 1search",{type: 'LISTENING'});
 });
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
@@ -24,7 +23,7 @@ client.on('message', async function(message) {
     if(message.author.bot) return;
     if(!message.channel.guild) return;
     //////////////////////////////////
-    if(message.content === `<@${client.user.id}>`) return message.channel.send(`Hey I'am **${client.user.username}**. A nice music bot developed by <@${client.users.get(devs[0]).id}>\nGet In touch with me \`\`lj-contact\`\``);
+    if(message.content === `<@${client.user.id}>`) return message.channel.send(`Hey I'am **${client.user.username}**. A nice music bot developed by <@${client.users.get(devs[0]).id}>\nGet In touch with me \`\`m-contact\`\``);
     const novc = "**:x: You are not in a voice channel.**"
     const yt = "✅"
     const correct = "✅"
@@ -125,21 +124,23 @@ client.on('message', async function(message) {
         let uptime = u.d + " days  , " + u.h + " hrs  , " + u.m + " mins  , " + u.s + " secs"
         message.channel.send(new RichEmbed() 
         .setAuthor(client.user.username,client.user.avatarURL)
+        .setURL("https://abayro.xyz")
         .addField("Version", bot.version, true)
         .addField("Library", "[discordjs](https://www.npmjs.com/search?q=discord.js)", true)
-        .addField("Creator", "wHybH", true)
+        .addField("Creator", "Abady", true)
         .addField("Users", `${client.users.size}`, true)
-        .addField('RAM Usage',`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,true)
+        .addField('RAM Usage',`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,true)     
+        .addField("Website", "http://abayro.xyz", true)
         .setFooter(`Uptime ${uptime} | ${client.user.username} doesn't use Lavalink!`)
         .setColor("RANDOM")
     )
       }
      else if (message.content.startsWith(`${prefix}invite`)) {
          client.generateInvite(["SEND_MESSAGES", 'CONNECT', 'SPEAK', 'VIEW_CHANNEL', 'ADMINISTRATOR']).then(link => {
-             message.channel.send("", {embed: {description: `LO5 says that would be awesome <3 **[Click here to invite me!](${link})**`, color: 0x00ff00}})
+             message.channel.send("", {embed: {description: `Abayro says that would be awesome <3 **[Click here to invite me!](${link})**`, color: 0x00ff00}})
          })
      } else if(message.content.startsWith(`${prefix}contact`)) {
-        if(!args) return message.channel.send(`Get in touch with me, leave a message. (Real Inqiures Only) \`\`lj-contact (Your message)\`\``)
+        if(!args) return message.channel.send(`Get in touch with me, leave a message. (Real Inqiures Only) \`\`m-contact (Your message)\`\``)
         if(args.length < 2) return message.channel.send(`Your message haven't delivered. make sure your message is more than one word.`)
         client.users.get(devs[0]).send(`${args}\n\n Server: ${message.guild.name} - User: ${message.author.tag}`).then(()=> {
             message.channel.send(`**Thank you!** Your message have been delivered. I'll try to reply as soon as possible.`, {files: ['https://pbs.twimg.com/media/DeikbSqV0AAUSUU.jpg']})
@@ -208,7 +209,7 @@ msg22.edit("", {embed: {
         const permissions = voiceChannel.permissionsFor(message.client.user)
         if (!permissions.has('CONNECT')) return message.channel.send({embed: {description: "🛑 I don't have permission to CONNECT! Give me some."}});
         if (!permissions.has('SPEAK')) return message.channel.send({embed: {description: "🛑 I don't have permission to SPEAK! Give me some."}});
-         if (args.length == 0 || !args) return message.channel.send(`:musical_note: ljplay **<Youtube URL / Search>**`)
+         if (args.length == 0 || !args) return message.channel.send(`:musical_note: 1play **<Youtube URL / Search>**`)
             if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
                 if(guilds[message.guild.id].queue.length > 100) return message.channel.send(``, {embed: {
                     description: `🔒 Sorry, max queue length is 100, do **${prefix}clear** to clear entire queue or **${prefix}clear <number>** to clear 1 item`
@@ -234,7 +235,7 @@ msg22.edit("", {embed: {
                 if(!id) return message.channel.send(`:x: I couldn't find anything with this title **${args}**.`);
                    fetchVideoInfo(id, function(err, videoInfo) {
                         if (err) throw new Error(err);
-                        if(videoInfo.duration > 3800) return message.channel.send(`**${message.author.username}, :x: Cannot play a video that's longer than 30 minutes**`).then(message.react(nope));
+                        if(videoInfo.duration > 1800) return message.channel.send(`**${message.author.username}, :x: Cannot play a video that's longer than 30 minutes**`).then(message.react(nope));
                         else message.react(correct)
                         add_to_queue(id, message);
                         message.channel.send(new RichEmbed()
@@ -279,7 +280,7 @@ msg22.edit("", {embed: {
                     if(!id) return message.channel.send(`:x: I couldn't find anything with this title **${args}**.`);
                     fetchVideoInfo(id, function(err, videoInfo) {
                         if (err) throw new Error(err);
-                        if(videoInfo.duration > 3800) return message.channel.send(`**${message.author.username}, :x: Cannot play a video that's longer than 30 minutes**`).then(message.react(nope))
+                        if(videoInfo.duration > 1800) return message.channel.send(`**${message.author.username}, :x: Cannot play a video that's longer than 30 minutes**`).then(message.react(nope))
                         else message.react(correct)
                         playMusic(id, message);
                         guilds[message.guild.id].isPlaying = true;
@@ -354,6 +355,7 @@ msg22.edit("", {embed: {
             if(!queuelist) return message.channel.send(`<:megX:476797393283710991> | Page doesn't exist!`)
             const embed = new RichEmbed()
             embed.setDescription(`__Now Playing:__\n**[${guilds[message.guild.id].queueNames[0]}](https://www.youtube.com/watch?v=${guilds[message.guild.id].queue[0]})**\n\n:arrow_down: __Up Next__  :arrow_down:\n\n${queuelist}\n\n**Total items in queue:** ${guilds[message.guild.id].queueNames.length}`)
+            embed.setThumbnail("https://upload.wikimedia.org/wikipedia/commons/7/73/YouTube_Music.png")
             embed.setAuthor(`${message.guild.name}'s Queue (${Math.floor(x/10)} / ${Math.floor((guilds[message.guild.id].queue.slice(1).length+10) /10)})`)
             embed.setColor(3447003);
             message.channel.send(embed).then(async msg => {
