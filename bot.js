@@ -3,11 +3,10 @@ const yt_api_key = "AIzaSyDV2JNcnCiCEW99ON7vvwBN5JkDWaIXkXc"
 const client = new Client({ disableEveryone: true})
 const ytdl = require("ytdl-core");
 const fetchVideoInfo = require("youtube-info");
-const devs = ["490478294135865344", "380307890235506698", "334837414738788355"]
 const bot = require('./package.json');
 const simpleytapi = require('simple-youtube-api')
 const youtube = new simpleytapi(yt_api_key);
-const prefix = "lj";
+const prefix = "*";
 client.login(process.env.BOT);
 var guilds = {};
 
@@ -15,7 +14,7 @@ var guilds = {};
 client.on("ready", () => {
 client.user.setStatus('dnd');
   console.log("Reeebel | Logged in! Server count: ${client.guilds.size}");
-  client.user.setActivity("LO5.~",{type: 'WATCHING'});
+  client.user.setActivity("ولد حايل",{type: 'WATCHING'});
 });
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
@@ -127,11 +126,11 @@ client.on('message', async function(message) {
         .setAuthor(client.user.username,client.user.avatarURL)
         .addField("Version", bot.version, true)
         .addField("Library", "[discordjs](https://www.npmjs.com/search?q=discord.js)", true)
-        .addField("Creator", "ثلآثة وسُتوننَ", true)
+        .addField("Creator", "#", true)
         .addField("Users", `${client.users.size}`, true)
         .addField('RAM Usage',`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,true)  
         .setFooter(`Uptime ${uptime} | ${client.user.username} doesn't use Lavalink!`)
-        .setColor("RANDOM")
+        .setColor("36393e")
     )
       }
      else if (message.content.startsWith(`${prefix}invite`)) {
@@ -208,7 +207,7 @@ msg22.edit("", {embed: {
         const permissions = voiceChannel.permissionsFor(message.client.user)
         if (!permissions.has('CONNECT')) return message.channel.send({embed: {description: "🛑 I don't have permission to CONNECT! Give me some."}});
         if (!permissions.has('SPEAK')) return message.channel.send({embed: {description: "🛑 I don't have permission to SPEAK! Give me some."}});
-         if (args.length == 0 || !args) return message.channel.send(`:musical_note: ljplay **<Youtube URL / Search>**`)
+         if (args.length == 0 || !args) return message.channel.send(`:musical_note: *play **<Youtube URL / Search>**`)
             if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
                 if(guilds[message.guild.id].queue.length > 100) return message.channel.send(``, {embed: {
                     description: `🔒 Sorry, max queue length is 100, do **${prefix}clear** to clear entire queue or **${prefix}clear <number>** to clear 1 item`
@@ -245,7 +244,7 @@ msg22.edit("", {embed: {
                         .addField("Duration", convert.fromS(videoInfo.duration, 'mm:ss') , true)
                         .addField("Published at", videoInfo.datePublished, true)
                         .addField("Postion in queue", guilds[message.guild.id].queueNames.length, true)
-						.setColor("RED")
+						.setColor("36393e")
 						.setThumbnail(videoInfo.thumbnailUrl)
                         )
                         guilds[message.guild.id].queueNames.push(videoInfo.title);
@@ -438,7 +437,7 @@ if(mess.startsWith(prefix+"np")) {
                             embed.addField("Duration", `${convert.fromS(videoInfo.duration, 'mm:ss')} — [**Download MP3**](https://www.flvto.biz/sa/downloads/mp3/yt_${videoInfo.videoId})`, true)
                             embed.addField("Views", short(videoInfo.views), true)
                             embed.addField("Likes/Dislikes", `👍 **${short(videoInfo.likeCount)}** / 👎 **${short(videoInfo.dislikeCount)}**`, true)
-                            embed.setColor("RED")
+                            embed.setColor("36393e")
                             embed.setImage(videoInfo.thumbnailUrl)
                         }
                         message.channel.stopTyping(true);
@@ -527,7 +526,7 @@ message.channel.send(`Playing :notes: **\`\`${videos[videoIndex - 1].title}\`\`*
             .addField("Duration", convert.fromS(videoInfo.duration, 'mm:ss') , true)
             .addField("Published at", videoInfo.datePublished, true)
             .addField("Postion in queue", guilds[message.guild.id].queueNames.length, true)
-            .setColor("RED")
+            .setColor("36393e")
             .setThumbnail(videoInfo.thumbnailUrl)
             )
             guilds[message.guild.id].queueNames.push(videoInfo.title);
